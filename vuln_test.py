@@ -8,5 +8,5 @@ def get_user():
     user_id = request.args.get("id")
     conn = sqlite3.connect("test.db")
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM users WHERE id = %s" % user_id)
+    cursor.execute("SELECT * FROM users WHERE id = ?", (user_id,))
     return "ok"
